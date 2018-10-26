@@ -31,6 +31,11 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        GoogleSignInAccount account;
+        account = GoogleSignIn.getLastSignedInAccount(Login.this);
+        if (FirebaseAuth.getInstance().getCurrentUser() != null)
+            startActivity(new Intent(Login.this, MainActivity.class));
+
 // ...
         mAuth = FirebaseAuth.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
